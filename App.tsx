@@ -52,8 +52,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 // --- Shared Components ---
 
 const Logo = ({ onClick }: { onClick: () => void }) => (
-  <button onClick={onClick} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-    <img src="/logo.png" alt="Talently Logo" className="h-8 w-auto" />
+  <button onClick={onClick} className="flex items-center hover:opacity-80 transition-opacity">
+    <img src="/logo.png" alt="Talently" className="h-8 w-auto object-contain" />
   </button>
 );
 
@@ -245,16 +245,16 @@ const ProblemSection = ({ lang }: { lang: 'pt' | 'en' }) => {
 const HowItWorksSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   const isPT = lang === 'pt';
   const items = isPT ? [
-    { title: "Publique a vaga", desc: "Inicie o processo em minutos com nosso formulário inteligente ou agende uma call rápida.", img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=600", icon: PlusCircle, step: "01" },
-    { title: "Busca ativa e triagem", desc: "Nossa rede outbound local encontra talentos passivos e qualifica cada um para o seu fit.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600", icon: Search, step: "02" },
-    { title: "Você entrevista e contrata", desc: "Fale apenas com candidatos de alto sinal. Sem spam, sem flood de currículos.", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600", icon: UserCheck, step: "03" }
+    { title: "Publique a vaga", desc: "Inicie o processo em minutos com nosso formulário inteligente ou agende uma call rápida.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600", icon: PlusCircle, step: "01" },
+    { title: "Busca ativa e triagem", desc: "Nossa rede outbound local encontra talentos passivos e qualifica cada um para o seu fit.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600", icon: Search, step: "02" },
+    { title: "Você entrevista e contrata", desc: "Fale apenas com candidatos de alto sinal. Sem spam, sem flood de currículos.", img: "https://images.unsplash.com/photo-1504868584819-f8e905263543?auto=format&fit=crop&q=80&w=600", icon: UserCheck, step: "03" }
   ] : [
     { title: "Share your role", desc: "Book a quick call or post the role in minutes. Clear requirements start here.", img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=600", icon: ClipboardList, step: "01" },
     { title: "Local experts source + vet", desc: "Recruiters in Brazil find relevant talent — Talently filters for technical and cultural fit.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600", icon: UserSearch, step: "02" },
     { title: "You interview and hire", desc: "You meet only high-signal candidates. No resume flood, just direct path to your next hire.", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600", icon: Handshake, step: "03" }
   ];
   return (
-    <section className="relative py-56 px-6 bg-[#fafafa] overflow-hidden">
+    <section className="relative py-32 px-6 bg-[#fafafa] overflow-hidden">
       <div className="max-w-7xl mx-auto relative">
         <div className="mb-32 text-center max-w-2xl mx-auto">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="inline-block px-4 py-1.5 rounded-full bg-purple-50 text-purple-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Workflows</motion.div>
@@ -291,10 +291,10 @@ const BenefitsSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   ] : [
     { title: "Local reach", desc: "Get access to Brazilian talent you won’t reach through job boards.", icon: Globe, badge: "LATAM Expertise" },
     { title: "Less noise", desc: "Skip hundreds of inbound applications and focus on the shortlist.", icon: Filter, badge: "Shortlist Focused" },
-    { title: "Lower risk", desc: "Candidates are recruiter-sourced and vetted before you engage.", icon: TrendingDown, badge: "Zero Commitment Fee" }
+    { title: "Lower risk", desc: "Hire fees are billed as monthly subscriptions that cancel if the employee leaves. Zero upfront \"shocks\" and no legal guarantee traps.", icon: TrendingDown, badge: "HIRE SUBSCRIPTION" }
   ];
   return (
-    <section className="relative py-56 px-6 bg-white overflow-hidden">
+    <section className="relative py-32 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-7xl font-bold text-slate-900 tracking-tight mb-24">{isPT ? "O que você recebe" : "Built for high-signal hiring"}</h2>
         <div className="grid lg:grid-cols-3 gap-10">
@@ -369,38 +369,197 @@ const WhyOrRolesSection = ({ lang }: { lang: 'pt' | 'en' }) => {
 
 const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   const isPT = lang === 'pt';
-  const bullets = isPT ? [
-    { text: "Success fee por contratação", icon: BadgeDollarSign },
-    { text: "Sem mensalidade", icon: Clock },
-    { text: "Sem retainer", icon: ShieldCheck }
-  ] : [
-    { text: "Success fee per hire", icon: BadgeDollarSign },
-    { text: "No retainers", icon: ShieldCheck },
-    { text: "No upfront fees", icon: Clock }
-  ];
-  return (
-    <section className="relative py-64 px-6 bg-white overflow-hidden" id="pricing-section">
-      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center">
-        <div className="relative">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative z-10 w-full aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-[16px] border-white">
-            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" className="w-full h-full object-cover" />
-          </motion.div>
-        </div>
-        <div className="lg:pl-10">
-          <h2 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight leading-[1.05] mb-8">{isPT ? "Simples. Transparente." : "Simple pricing"}</h2>
-          <div className="mb-12">
-            <p className="text-xl md:text-2xl text-slate-500 font-medium mb-4">{isPT ? "Você publica a vaga sem custo." : "Pay only if you hire."}</p>
-            <p className="text-xl md:text-2xl text-slate-900 font-bold">{isPT ? "Só existe cobrança quando você contrata." : "No retainers. No upfront fees. Transparent success fee per hire."}</p>
+  
+  if (!isPT) {
+    return (
+      <section className="relative py-32 px-6 bg-white overflow-hidden" id="pricing-section">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">Pricing Plans</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Choose the model that best fits your hiring needs.</p>
           </div>
-          <div className="space-y-6 mb-16">
-            {bullets.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-5 group">
-                <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600"><item.icon className="w-5 h-5" /></div>
-                <span className="text-lg font-bold text-slate-700">{item.text}</span>
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* 1. On-Demand */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-[40px] border border-slate-100 p-8 shadow-sm flex flex-col"
+            >
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-1">On-Demand</h3>
+                <p className="text-slate-500 text-sm font-medium">Best for occasional or urgent hires.</p>
               </div>
-            ))}
+              <ul className="space-y-4 mb-8 flex-grow">
+                <li className="flex gap-3 text-sm text-slate-600 font-medium"><Check className="w-4 h-4 text-purple-600 shrink-0" /> Single role</li>
+                <li className="flex gap-3 text-sm text-slate-600 font-medium"><Check className="w-4 h-4 text-purple-600 shrink-0" /> Fully sourced + screened candidates</li>
+                <li className="flex gap-3 text-sm text-slate-600 font-medium"><Check className="w-4 h-4 text-purple-600 shrink-0" /> 20% success fee (based on first-year salary)</li>
+                <li className="flex gap-3 text-sm text-slate-500 text-xs pl-7 italic">Paid in 3 monthly installments starting on the hire’s start date</li>
+                <li className="flex gap-3 text-sm text-slate-600 font-medium"><Check className="w-4 h-4 text-purple-600 shrink-0" /> 90-day replacement guarantee</li>
+                <li className="flex gap-3 text-sm text-slate-500 text-xs pl-7 italic">If the hire leaves, we replace them at no cost.</li>
+              </ul>
+              <div className="pt-6 border-t border-slate-50">
+                <p className="text-slate-900 font-bold text-sm mb-6">No upfront fees. No commitment.</p>
+                <button className="btn-get-started w-full py-4 rounded-xl text-sm">Get Started</button>
+              </div>
+            </motion.div>
+
+            {/* 2. Talent Credits */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-slate-900 rounded-[40px] p-8 shadow-xl flex flex-col text-white relative overflow-hidden"
+            >
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold mb-1">Talent Credits</h3>
+                <p className="text-slate-400 text-sm font-medium">Best for teams hiring 3+ people</p>
+                <div className="mt-4 flex items-baseline gap-1">
+                  <span className="text-3xl font-bold">$7,500</span>
+                  <span className="text-slate-400 text-sm">/credit</span>
+                </div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Minimum 3 credits • 6-month payment plan available</p>
+              </div>
+              <ul className="space-y-4 mb-8 flex-grow">
+                <li className="flex gap-3 text-sm text-slate-300 font-medium"><Check className="w-4 h-4 text-purple-400 shrink-0" /> Credit usage:</li>
+                <li className="pl-7 text-xs text-slate-400">Junior / Mid = 0.5 credits</li>
+                <li className="pl-7 text-xs text-slate-400">Senior = 1 credit</li>
+                <li className="pl-7 text-xs text-slate-400">Executive = 2 credits</li>
+                <li className="flex gap-3 text-sm text-slate-300 font-medium"><Check className="w-4 h-4 text-purple-400 shrink-0" /> 180-day credit-back guarantee</li>
+                <li className="pl-7 text-xs text-slate-400 italic">If a hire leaves within 180 days, you get your credit back</li>
+                <li className="flex gap-3 text-sm text-slate-300 font-medium"><Check className="w-4 h-4 text-purple-400 shrink-0" /> Credits never expire.</li>
+              </ul>
+              <div className="pt-6 border-t border-white/10">
+                <button className="w-full py-4 rounded-xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm">Buy Credits</button>
+              </div>
+            </motion.div>
+
+            {/* 3. Compare Your Cost */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-purple-50 rounded-[40px] border border-purple-100 p-8 flex flex-col justify-center items-center text-center"
+            >
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-purple-600 mb-6 shadow-sm">
+                <BarChart3 className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Compare Your Cost</h3>
+              <p className="text-slate-600 font-medium mb-8">Planning multiple hires?<br/>Use our calculator to see your projected savings.</p>
+              <button className="btn-learn-more w-full py-4 rounded-xl text-sm bg-slate-900 text-white">Calculate My Savings</button>
+            </motion.div>
           </div>
-          <button className="btn-get-started w-full md:w-auto text-lg px-16 py-6 rounded-[24px]">{isPT ? "Agendar demo" : "Book a demo"}</button>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="relative py-32 px-6 bg-white overflow-hidden" id="pricing-section">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">Planos para o seu negócio</h2>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto">Escolha o modelo que melhor se adapta ao seu momento de contratação.</p>
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* Plano Sob Demanda */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[48px] border border-slate-100 p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] flex flex-col"
+          >
+            <div className="mb-8">
+              <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-6">
+                <Target className="w-7 h-7" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-2">Plano Sob Demanda</h3>
+              <p className="text-slate-500 font-medium">Para contratações pontuais</p>
+            </div>
+            
+            <ul className="space-y-5 mb-10 flex-grow">
+              {[
+                { title: "Publicação na Rede Talently", desc: "Sua vaga é publicada diretamente para nossa rede de recrutadores especializados." },
+                { title: "Candidatos Pré-selecionados", desc: "Receba apenas talentos que já passaram por uma triagem inicial." },
+                { title: "Validação de Senioridade", desc: "Proteção contra currículos \"maquiados\". Cada candidato passa por uma análise de senioridade real." },
+                { title: "Taxa de Sucesso", desc: "1,5x o primeiro salário mensal do candidato contratado." },
+                { title: "Pagamento Facilitado", desc: "Parcelado em até 3x mensais, começando apenas no primeiro dia de trabalho." },
+                { title: "Garantia", desc: "90 dias de reposição gratuita em caso de desligamento." }
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-1" />
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">{item.title}</p>
+                    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="pt-8 border-t border-slate-50">
+              <div className="mb-6">
+                <span className="text-emerald-600 font-bold text-sm uppercase tracking-wider">Vantagem</span>
+                <p className="text-slate-700 font-medium text-sm">Sem custos fixos ou mensais. Você só paga se contratar.</p>
+              </div>
+              <button className="btn-get-started w-full py-5 rounded-2xl">Começar agora</button>
+            </div>
+          </motion.div>
+
+          {/* Plano Scale */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-slate-900 rounded-[48px] p-10 shadow-2xl flex flex-col text-white relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-8">
+              <div className="bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Recomendado</div>
+            </div>
+            
+            <div className="mb-8">
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6">
+                <Rocket className="w-7 h-7" />
+              </div>
+              <h3 className="text-3xl font-bold mb-2">Plano Scale</h3>
+              <p className="text-slate-400 font-medium">Para empresas em crescimento</p>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-bold">R$ 599</span>
+                <span className="text-slate-400 text-sm">/mês</span>
+              </div>
+              <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Assinatura de 12 meses</p>
+            </div>
+            
+            <ul className="space-y-5 mb-10 flex-grow">
+              {[
+                { title: "Candidatos Qualificados", desc: "Acesso a profissionais identificados e pré-selecionados prontos para entrevista." },
+                { title: "Taxas de Sucesso Fixas", desc: "Pleno: R$ 5k | Sênior: R$ 10k | Executivo: R$ 20k." },
+                { title: "Modelo de Risco Compartilhado", desc: "Taxa de contratação parcelada em até 12x mensais." },
+                { title: "Garantia de Retenção Ativa", desc: "Se o profissional sair, as parcelas futuras são canceladas imediatamente." },
+                { title: "Previsibilidade", desc: "Custos fixos que facilitam seu planejamento financeiro." }
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <CheckCircle className="w-5 h-5 text-purple-400 shrink-0 mt-1" />
+                  <div>
+                    <p className="font-bold text-white text-sm">{item.title}</p>
+                    <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="pt-8 border-t border-white/10">
+              <div className="mb-6">
+                <span className="text-purple-400 font-bold text-sm uppercase tracking-wider">Foco</span>
+                <p className="text-slate-300 font-medium text-sm">Pague pelo tempo que o talento gerou valor real.</p>
+              </div>
+              <button className="w-full py-5 rounded-2xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors">Falar com consultor</button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -410,7 +569,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
 const AboutUsSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   const isPT = lang === 'pt';
   return (
-    <section className="relative py-56 px-6 bg-[#fafafa] overflow-hidden border-b border-slate-100">
+    <section className="relative py-32 px-6 bg-[#fafafa] overflow-hidden border-b border-slate-100">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
         <div className="order-2 lg:order-1">
           <h2 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-10">{isPT ? "Sobre a Talently" : "About Talently"}</h2>
@@ -438,7 +597,7 @@ const TestimonialsSection = ({ lang }: { lang: 'pt' | 'en' }) => {
     { name: "Danilo Mendes", role: "Partner, MartelloEF", quote: isPT ? "“A contratação veio muito alinhada. Hoje consigo executar com consistência com alguém que realmente encaixou.”" : "“The hire was perfectly aligned. Today I can execute consistently with someone who truly fits.”", color: "border-blue-200" }
   ];
   return (
-    <section className="relative py-64 px-6 bg-white overflow-hidden">
+    <section className="relative py-32 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-32">
           <h2 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight">{isPT ? "O que nossos clientes dizem" : "What our clients say"}</h2>
@@ -463,7 +622,7 @@ const TestimonialsSection = ({ lang }: { lang: 'pt' | 'en' }) => {
 const FinalCTASection = ({ lang }: { lang: 'pt' | 'en' }) => {
   const isPT = lang === 'pt';
   return (
-    <section className="relative py-48 px-6 bg-slate-900 overflow-hidden">
+    <section className="relative py-32 px-6 bg-slate-900 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[160px]" />
       </div>
@@ -524,7 +683,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
 
   return (
     <div className="flex-grow">
-      <section className="relative pt-48 pb-40 px-6 overflow-visible">
+      <section className="relative pt-32 pb-24 px-6 overflow-visible">
         <NetworkBackground />
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-bold uppercase tracking-[0.25em] mb-12 border border-emerald-100 shadow-sm">
@@ -555,7 +714,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
           </motion.div>
         </div>
       </section>
-      <section className="py-56 px-6 bg-[#fafafa]">
+      <section className="py-32 px-6 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
@@ -574,7 +733,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
           </div>
         </div>
       </section>
-      <section className="py-56 px-6 bg-white">
+      <section className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
           <div className="lg:w-1/2">
             <div className="inline-block px-4 py-1.5 rounded-full bg-purple-50 text-purple-600 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">Standards</div>
@@ -591,7 +750,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
           </div>
         </div>
       </section>
-      <section className="py-48 px-6 bg-slate-950 text-white overflow-hidden relative">
+      <section className="py-32 px-6 bg-slate-950 text-white overflow-hidden relative">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tight mb-12">{isPT ? "Pronto para começar?" : "Ready to start?"}</h2>
           <button className="btn-get-started px-16 py-8 text-xl rounded-3xl bg-white text-slate-900 mx-auto flex items-center gap-4">{isPT ? "Criar conta de recrutador" : "Create recruiter account"} <ArrowRight className="w-6 h-6" /></button>
@@ -611,7 +770,7 @@ export default function App() {
   const activeContent = lang === 'pt' ? {
     hero: {
       headline: <>Onde empresas contratam seus <span className="text-purple-600 italic font-bold">melhores talentos.</span></>,
-      subheadline: "A Talently é um hiring marketplace focado em qualidade. Nossa rede de recrutadores experts faz a busca ativa e triagem para que você fale apenas com finalistas.",
+      subheadline: "Otimize seu processo seletivo com a Talently. Somos um marketplace de recrutamento que une tecnologia e especialistas para realizar buscas ativas e triagens precisas. Com a gente, você pula a fase de currículos genéricos e foca apenas nos candidatos ideais, garantindo agilidade e máxima qualidade na contratação.",
       tags: [{ icon: Zap, text: "Qualidade acima de volume" }, { icon: Target, text: "Busca ativa + triagem" }, { icon: ShieldCheck, text: "Só paga se contratar" }],
       primaryCTA: "Publicar vaga",
       secondaryCTA: "Agendar demo"
@@ -620,7 +779,7 @@ export default function App() {
     hero: {
       headline: <>Build your world-class team in <span className="text-purple-600 italic font-bold underline decoration-purple-200 underline-offset-8">Brazil</span> for 50% less.</>,
       subheadline: "Top talent. Your time zone. Zero risk. Talently is a hiring marketplace where recruiters vet and deliver candidates in days.",
-      tags: [{ icon: Zap, text: "Remote-ready talent" }, { icon: Target, text: "US/Europe Overlap" }, { icon: ShieldCheck, text: "Success-fee only" }],
+      tags: [{ icon: Zap, text: "Remote-ready talent" }, { icon: Target, text: "US/Europe Overlap" }, { icon: ShieldCheck, text: "English vetted" }],
       primaryCTA: "Post a role",
       secondaryCTA: "Book a demo"
     }
@@ -634,7 +793,7 @@ export default function App() {
 
   const HomeViewContent = () => (
     <>
-      <main className="pt-56 pb-52 flex-grow relative overflow-visible">
+      <main className="pt-40 pb-32 flex-grow relative overflow-visible">
         <NetworkBackground />
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-14 inline-flex items-center gap-3 bg-white/50 backdrop-blur-md px-5 py-2 rounded-full border border-slate-100 shadow-sm">
@@ -656,19 +815,9 @@ export default function App() {
             <button className="btn-get-started text-lg px-14"> {activeContent.hero.primaryCTA} </button>
             <button className="btn-learn-more text-lg px-14"> {activeContent.hero.secondaryCTA} </button>
           </motion.div>
-
-          <PlatformFloatingCard title="Senior Python Engineer" company="TechFlow Labs" bounty="2000" activeHires="1" img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400" className="top-[0%] -right-[10%]" delay={1} />
-          <FloatingProfile name="Simon Phillips" info="CTO • Hiring Active" date="Awaiting Review" img="https://i.pravatar.cc/150?img=32" className="top-[2%] -left-[12%]" delay={0.5} />
-          <FloatingBadge text="Dr. Gary Elkins • Recruitment Expert" color="bg-purple-600" icon={ShieldCheck} className="top-[35%] -right-[12%]" delay={1.5} />
-          <motion.div animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }} transition={{ duration: 6, repeat: Infinity }} className="absolute top-[38%] -left-[8%] w-16 h-16 bg-white rounded-[24px] flex items-center justify-center hidden xl:flex shadow-xl border border-slate-50 z-0">
-             <Users className="text-purple-600 w-7 h-7" />
-          </motion.div>
-          <PlatformFloatingCard title="Senior Sales Manager" company="GlobalScale Inc" bounty="4500" activeHires="2" img="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400" className="bottom-[5%] -right-[12%]" delay={2.5} />
-          <TeamWorkingCard className="bottom-[5%] -left-[12%]" delay={1.2} />
         </div>
       </main>
 
-      <ProblemSection lang={lang} />
       <HowItWorksSection lang={lang} />
       <BenefitsSection lang={lang} />
       <WhyOrRolesSection lang={lang} />

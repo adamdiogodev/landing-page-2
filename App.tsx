@@ -49,6 +49,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const CALENDLY_URL = 'https://calendly.com/gabriel-trytalently/30-minute-demo';
+
 // --- Shared Components ---
 
 const Logo = ({ onClick }: { onClick: () => void }) => (
@@ -401,7 +403,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
               </ul>
               <div className="pt-6 border-t border-slate-50">
                 <p className="text-slate-900 font-bold text-sm mb-6">No upfront fees. No commitment.</p>
-                <button className="btn-get-started w-full py-4 rounded-xl text-sm">Get Started</button>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started w-full py-4 rounded-xl text-sm inline-block text-center">Get Started</a>
               </div>
             </motion.div>
 
@@ -432,7 +434,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
                 <li className="flex gap-3 text-sm text-slate-300 font-medium"><Check className="w-4 h-4 text-purple-400 shrink-0" /> Credits never expire.</li>
               </ul>
               <div className="pt-6 border-t border-white/10">
-                <button className="w-full py-4 rounded-xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm">Buy Credits</button>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="w-full py-4 rounded-xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm inline-block text-center">Buy Credits</a>
               </div>
             </motion.div>
 
@@ -449,7 +451,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Compare Your Cost</h3>
               <p className="text-slate-600 font-medium mb-8">Planning multiple hires?<br/>Use our calculator to see your projected savings.</p>
-              <button className="btn-learn-more w-full py-4 rounded-xl text-sm bg-slate-900 text-white">Calculate My Savings</button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more w-full py-4 rounded-xl text-sm bg-slate-900 text-white inline-block text-center">Calculate My Savings</a>
             </motion.div>
           </div>
         </div>
@@ -505,7 +507,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
                 <span className="text-emerald-600 font-bold text-sm uppercase tracking-wider">Vantagem</span>
                 <p className="text-slate-700 font-medium text-sm">Sem custos fixos ou mensais. Você só paga se contratar.</p>
               </div>
-              <button className="btn-get-started w-full py-5 rounded-2xl">Começar agora</button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started w-full py-5 rounded-2xl inline-block text-center">Começar agora</a>
             </div>
           </motion.div>
 
@@ -557,7 +559,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
                 <span className="text-purple-400 font-bold text-sm uppercase tracking-wider">Foco</span>
                 <p className="text-slate-300 font-medium text-sm">Pague pelo tempo que o talento gerou valor real.</p>
               </div>
-              <button className="w-full py-5 rounded-2xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors">Falar com consultor</button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="w-full py-5 rounded-2xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors inline-block text-center">Falar com consultor</a>
             </div>
           </motion.div>
         </div>
@@ -636,7 +638,7 @@ const FinalCTASection = ({ lang }: { lang: 'pt' | 'en' }) => {
             <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tight mb-8 leading-none">Smarter hiring <br/><span className="text-purple-400">starts here.</span></h2>
             <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-2xl mx-auto font-medium leading-relaxed">Agende uma conversa e veja como a Talently ajuda sua empresa a contratar com mais qualidade.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <button className="btn-get-started px-16 py-6 text-lg rounded-2xl flex items-center justify-center gap-3">Agendar demo <Calendar className="w-5 h-5" /></button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-16 py-6 text-lg rounded-2xl flex items-center justify-center gap-3 inline-flex">Agendar demo <Calendar className="w-5 h-5" /></a>
             </div>
           </>
         ) : (
@@ -644,8 +646,8 @@ const FinalCTASection = ({ lang }: { lang: 'pt' | 'en' }) => {
             <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tight mb-8 leading-none">Ready to hire <br/><span className="text-purple-400">in Brazil?</span></h2>
             <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">Book a demo to see how Talently works — and how fast you can start receiving recruiter-sourced candidates.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 items-center">
-              <button className="btn-get-started px-12 py-6 text-lg rounded-2xl">Book a demo</button>
-              <button className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100">Post a role</button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-12 py-6 text-lg rounded-2xl inline-block text-center">Book a demo</a>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100 inline-block text-center">Post a role</a>
             </div>
             <p className="mt-10 text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">Success-fee only • No upfront fees • Built for global teams</p>
           </>
@@ -698,7 +700,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
               : "Get paid for placing Brazilian talent with global companies. Earn a bounty when your candidate gets hired."}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-col sm:flex-row justify-center gap-6 items-center">
-            <button className="btn-get-started px-14 py-6 text-lg rounded-2xl">{isPT ? "Explorar vagas" : "Browse roles"}</button>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-14 py-6 text-lg rounded-2xl inline-block text-center">{isPT ? "Explorar vagas" : "Browse roles"}</a>
           </motion.div>
           <p className="mt-8 text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">
             {isPT ? "Pago por contratação • Sem exclusividade • Trabalhe onde quiser" : "Paid per hire • No exclusivity • Work on roles you choose"}
@@ -753,7 +755,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
       <section className="py-32 px-6 bg-slate-950 text-white overflow-hidden relative">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-5xl md:text-8xl font-bold tracking-tight mb-12">{isPT ? "Pronto para começar?" : "Ready to start?"}</h2>
-          <button className="btn-get-started px-16 py-8 text-xl rounded-3xl bg-white text-slate-900 mx-auto flex items-center gap-4">{isPT ? "Criar conta de recrutador" : "Create recruiter account"} <ArrowRight className="w-6 h-6" /></button>
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-16 py-8 text-xl rounded-3xl bg-white text-slate-900 mx-auto flex items-center gap-4 inline-flex w-fit">{isPT ? "Criar conta de recrutador" : "Create recruiter account"} <ArrowRight className="w-6 h-6" /></a>
         </div>
       </section>
     </div>
@@ -763,7 +765,7 @@ const RecruiterView = ({ lang }: { lang: 'pt' | 'en' }) => {
 // --- Main App ---
 
 export default function App() {
-  const [lang, setLang] = useState<'pt' | 'en'>(process.env.DEFAULT_LANG as any || 'pt');
+  const [lang, setLang] = useState<'pt' | 'en'>(process.env.DEFAULT_LANG as any || 'en');
   const [view, setView] = useState<'home' | 'recruiter'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   
@@ -812,8 +814,8 @@ export default function App() {
             {activeContent.hero.subheadline}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-8">
-            <button className="btn-get-started text-lg px-14"> {activeContent.hero.primaryCTA} </button>
-            <button className="btn-learn-more text-lg px-14"> {activeContent.hero.secondaryCTA} </button>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started text-lg px-14 inline-block text-center"> {activeContent.hero.primaryCTA} </a>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more text-lg px-14 inline-block text-center"> {activeContent.hero.secondaryCTA} </a>
           </motion.div>
         </div>
       </main>
@@ -844,7 +846,7 @@ export default function App() {
             </button>
             <button onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} className="text-purple-600 font-bold ml-4">{lang === 'pt' ? 'EN' : 'PT'}</button>
           </div>
-          <button className="btn-talk">{lang === 'pt' ? 'Fale Conosco' : 'Let\'s Talk'} <ArrowUpRight className="w-4 h-4" /></button>
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-talk inline-flex items-center gap-2">{lang === 'pt' ? 'Fale Conosco' : 'Let\'s Talk'} <ArrowUpRight className="w-4 h-4" /></a>
         </div>
       </nav>
 
@@ -876,15 +878,15 @@ export default function App() {
                 <li className="cursor-pointer hover:text-black transition-colors">{lang === 'pt' ? 'Como funciona' : 'How it works'}</li>
                 <li className="cursor-pointer hover:text-black transition-colors">{lang === 'pt' ? 'Preços' : 'Pricing'}</li>
                 <li className="cursor-pointer hover:text-black transition-colors">{lang === 'pt' ? 'Vagas' : 'Roles'}</li>
-                <li className="cursor-pointer hover:text-black transition-colors">{lang === 'pt' ? 'Contato' : 'Contact'}</li>
+                <li><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">{lang === 'pt' ? 'Contato' : 'Contact'}</a></li>
               </ul>
             </div>
             <div className="flex flex-col gap-8">
               <span className="text-[11px] font-semibold text-slate-300 uppercase tracking-[0.3em]">{lang === 'pt' ? 'Recrutadores' : 'Recruiters'}</span>
               <ul className="flex flex-col gap-5 text-sm font-medium text-slate-500">
-                <li className="cursor-pointer text-purple-600 font-bold hover:text-purple-800 transition-colors" onClick={() => { setView('recruiter'); window.scrollTo(0, 0); }}>
+                <li><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="text-purple-600 font-bold hover:text-purple-800 transition-colors">
                   {lang === 'pt' ? 'Você é um recrutador? Junte-se à Talently' : 'Are you a recruiter? Join Talently'}
-                </li>
+                </a></li>
               </ul>
             </div>
           </div>

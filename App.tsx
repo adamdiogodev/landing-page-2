@@ -45,7 +45,8 @@ import {
   Briefcase,
   Award,
   Wallet,
-  Monitor
+  Monitor,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -568,6 +569,141 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   );
 };
 
+const FAQSection = ({ lang }: { lang: 'pt' | 'en' }) => {
+  const isPT = lang === 'pt';
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqs = isPT ? [
+    {
+      question: "Como a Talently é diferente das agências de recrutamento?",
+      answer: "A Talently é um marketplace que conecta sua empresa a vários recrutadores em um só lugar, ajudando você a encontrar e contratar a pessoa certa. Isso amplia muito o alcance da sua busca, mantendo o nível de qualidade que você precisa. Você tem acesso a uma rede de recrutadores sem precisar contratá-los ou gerenciá-los diretamente."
+    },
+    {
+      question: "Como funciona o preço?",
+      answer: "O modelo é 100% baseado em sucesso. Não há taxa inicial nem mensalidade. Você só paga quando encontra a pessoa certa e ela realmente entra para o seu time. Se você não contratar, não paga nada."
+    },
+    {
+      question: "E se a contratação não der certo?",
+      answer: "Todas as contratações têm garantia de 90 dias. Se a pessoa sair nos primeiros três meses, encontramos um substituto para você ou devolvemos o seu dinheiro."
+    }
+  ] : [
+    {
+      question: "How is Talently different than agencies?",
+      answer: "Talently's marketplace platform allows you to work with multiple Brazilian recruiters all in one place, expanding the surface area of your search while meeting your quality bar. You get the power of a recruitment network without the overhead of managing them directly."
+    },
+    {
+      question: "What is the pricing?",
+      answer: "It’s strictly success-only. No upfront fees and no monthly retainers. You only pay when you find the right person and they actually join your team. We only win if you get the right fit."
+    },
+    {
+      question: "What if the hire doesn’t work out?",
+      answer: "Every hire is backed by a 90-day guarantee. If they leave within the first three months, we’ll find you a replacement or your money back."
+    }
+  ];
+
+  return (
+    <section className="relative py-32 px-6 bg-slate-50/50 overflow-hidden" id="faq-section">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-100/30 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-100/30 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-3xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-purple-600 text-[10px] font-bold uppercase tracking-widest mb-6"
+          >
+            <MessageSquare className="w-3 h-3" />
+            <span>Support</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
+            {isPT ? "Perguntas Frequentes" : "Frequently asked questions"}
+          </h2>
+          <p className="text-slate-500 font-medium text-lg max-w-xl mx-auto">
+            {isPT 
+              ? "Tudo o que você precisa saber sobre como contratar os melhores talentos do Brasil." 
+              : "Everything you need to know about hiring the best talent from Brazil."}
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={`group rounded-3xl border transition-all duration-500 overflow-hidden ${
+                  isOpen 
+                    ? 'bg-white border-purple-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)]' 
+                    : 'bg-white/40 border-slate-100 hover:border-slate-200'
+                }`}
+              >
+                <button 
+                  onClick={() => setOpenIndex(isOpen ? null : idx)}
+                  className="w-full px-8 py-7 flex items-center justify-between text-left"
+                >
+                  <span className={`text-xl font-bold transition-colors duration-300 ${
+                    isOpen ? 'text-slate-900' : 'text-slate-700 group-hover:text-slate-900'
+                  }`}>
+                    {faq.question}
+                  </span>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    isOpen ? 'bg-purple-600 text-white rotate-180' : 'bg-slate-50 text-slate-400 group-hover:bg-slate-100'
+                  }`}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
+                </button>
+                
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      <div className="px-8 pb-8">
+                        <div className="w-full h-px bg-slate-50 mb-8" />
+                        <p className="text-lg text-slate-500 leading-relaxed font-medium">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-20 p-10 rounded-[40px] bg-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div className="text-center md:text-left">
+            <h3 className="text-2xl font-bold mb-2">{isPT ? "Ainda tem dúvidas?" : "Still have questions?"}</h3>
+            <p className="text-slate-400 font-medium">{isPT ? "Nossa equipe está pronta para ajudar você." : "Our team is ready to help you."}</p>
+          </div>
+          <button className="btn-get-started px-10 py-4 rounded-2xl whitespace-nowrap">
+            {isPT ? "Falar com especialista" : "Talk to a specialist"}
+          </button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const AboutUsSection = ({ lang }: { lang: 'pt' | 'en' }) => {
   const isPT = lang === 'pt';
   return (
@@ -647,7 +783,7 @@ const FinalCTASection = ({ lang }: { lang: 'pt' | 'en' }) => {
             <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">Book a demo to see how Talently works — and how fast you can start receiving recruiter-sourced candidates.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 items-center">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-12 py-6 text-lg rounded-2xl inline-block text-center">Book a demo</a>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100 inline-block text-center">Post a role</a>
+              <a href={'http://app.trytalently.com'} target="_blank" rel="noopener noreferrer" className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100 inline-block text-center">Post a role</a>
             </div>
             <p className="mt-10 text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">Success-fee only • No upfront fees • Built for global teams</p>
           </>
@@ -814,7 +950,7 @@ export default function App() {
             {activeContent.hero.subheadline}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-8">
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started text-lg px-14 inline-block text-center"> {activeContent.hero.primaryCTA} </a>
+            <a href={'http://app.trytalently.com'} target="_blank" rel="noopener noreferrer" className="btn-get-started text-lg px-14 inline-block text-center"> {activeContent.hero.primaryCTA} </a>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more text-lg px-14 inline-block text-center"> {activeContent.hero.secondaryCTA} </a>
           </motion.div>
         </div>
@@ -823,7 +959,7 @@ export default function App() {
       <HowItWorksSection lang={lang} />
       <BenefitsSection lang={lang} />
       <WhyOrRolesSection lang={lang} />
-      <PricingSection lang={lang} />
+      <FAQSection lang={lang} />
       <AboutUsSection lang={lang} />
       <TestimonialsSection lang={lang} />
       <FinalCTASection lang={lang} />
@@ -884,7 +1020,7 @@ export default function App() {
             <div className="flex flex-col gap-8">
               <span className="text-[11px] font-semibold text-slate-300 uppercase tracking-[0.3em]">{lang === 'pt' ? 'Recrutadores' : 'Recruiters'}</span>
               <ul className="flex flex-col gap-5 text-sm font-medium text-slate-500">
-                <li><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="text-purple-600 font-bold hover:text-purple-800 transition-colors">
+                <li><a href={'http://app.trytalently.com'} target="_blank" rel="noopener noreferrer" className="text-purple-600 font-bold hover:text-purple-800 transition-colors">
                   {lang === 'pt' ? 'Você é um recrutador? Junte-se à Talently' : 'Are you a recruiter? Join Talently'}
                 </a></li>
               </ul>
@@ -892,11 +1028,7 @@ export default function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-24 mt-24 border-t border-slate-50 text-[10px] font-medium text-slate-300 uppercase tracking-[0.4em] flex justify-between items-center">
-          <p>© 2024 Talently Network Inc.</p>
-          <div className="flex gap-10">
-            <span className="hover:text-black cursor-pointer transition-colors">LinkedIn</span>
-            <span className="hover:text-black cursor-pointer transition-colors">Instagram</span>
-          </div>
+          <p>© 2026 Talently Network Inc.</p>
         </div>
       </footer>
     </div>

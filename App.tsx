@@ -50,7 +50,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CALENDLY_URL = 'https://calendly.com/gabriel-trytalently/30-minute-demo';
+const CALENDLY_URL = 'https://calendly.com/gabriel-trytalently/recruitment';
 const TALENTLY_APP_LOGIN_PT = 'https://app.talently.com.br/login';
 const TALENTLY_APP_LOGIN_EN = 'https://app.trytalently.com/login';
 

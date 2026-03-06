@@ -51,6 +51,8 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CALENDLY_URL = 'https://calendly.com/gabriel-trytalently/30-minute-demo';
+const TALENTLY_APP_LOGIN_PT = 'https://app.talently.com.br/login';
+const TALENTLY_APP_LOGIN_EN = 'https://app.trytalently.com/login';
 
 // --- Shared Components ---
 
@@ -508,7 +510,7 @@ const PricingSection = ({ lang }: { lang: 'pt' | 'en' }) => {
                 <span className="text-emerald-600 font-bold text-sm uppercase tracking-wider">Vantagem</span>
                 <p className="text-slate-700 font-medium text-sm">Sem custos fixos ou mensais. Você só paga se contratar.</p>
               </div>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started w-full py-5 rounded-2xl inline-block text-center">Começar agora</a>
+              <a href={TALENTLY_APP_LOGIN_PT} target="_blank" rel="noopener noreferrer" className="btn-get-started w-full py-5 rounded-2xl inline-block text-center">Começar agora</a>
             </div>
           </motion.div>
 
@@ -783,7 +785,7 @@ const FinalCTASection = ({ lang }: { lang: 'pt' | 'en' }) => {
             <p className="text-xl md:text-2xl text-slate-400 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">Book a demo to see how Talently works — and how fast you can start receiving recruiter-sourced candidates.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 items-center">
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-get-started px-12 py-6 text-lg rounded-2xl inline-block text-center">Book a demo</a>
-              <a href={'http://app.trytalently.com'} target="_blank" rel="noopener noreferrer" className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100 inline-block text-center">Post a role</a>
+              <a href={TALENTLY_APP_LOGIN_EN} target="_blank" rel="noopener noreferrer" className="btn-learn-more px-12 py-6 text-lg rounded-2xl bg-white text-slate-900 hover:bg-slate-100 inline-block text-center">Post a role</a>
             </div>
             <p className="mt-10 text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">Success-fee only • No upfront fees • Built for global teams</p>
           </>
@@ -950,7 +952,7 @@ export default function App() {
             {activeContent.hero.subheadline}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-8">
-            <a href={'http://app.trytalently.com'} target="_blank" rel="noopener noreferrer" className="btn-get-started text-lg px-14 inline-block text-center"> {activeContent.hero.primaryCTA} </a>
+            <a href={lang === 'pt' ? TALENTLY_APP_LOGIN_PT : TALENTLY_APP_LOGIN_EN} target="_blank" rel="noopener noreferrer" className="btn-get-started text-lg px-14 inline-block text-center"> {activeContent.hero.primaryCTA} </a>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-learn-more text-lg px-14 inline-block text-center"> {activeContent.hero.secondaryCTA} </a>
           </motion.div>
         </div>

@@ -583,10 +583,6 @@ const FAQSection = ({ lang }: { lang: 'pt' | 'en' }) => {
     {
       question: "Como funciona o preço?",
       answer: "O modelo é 100% baseado em sucesso. Não há taxa inicial nem mensalidade. Você só paga quando encontra a pessoa certa e ela realmente entra para o seu time. Se você não contratar, não paga nada."
-    },
-    {
-      question: "E se a contratação não der certo?",
-      answer: "Todas as contratações têm garantia de 90 dias. Se a pessoa sair nos primeiros três meses, encontramos um substituto para você ou devolvemos o seu dinheiro."
     }
   ] : [
     {
@@ -596,10 +592,6 @@ const FAQSection = ({ lang }: { lang: 'pt' | 'en' }) => {
     {
       question: "What is the pricing?",
       answer: "It’s strictly success-only. No upfront fees and no monthly retainers. You only pay when you find the right person and they actually join your team. We only win if you get the right fit."
-    },
-    {
-      question: "What if the hire doesn’t work out?",
-      answer: "Every hire is backed by a 90-day guarantee. If they leave within the first three months, we’ll find you a replacement or your money back."
     }
   ];
 
